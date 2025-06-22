@@ -1,12 +1,12 @@
 require('dotenv').config();
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const { scheduleMessage } = require('./scheduler');
+import express from 'express';
+import { json } from 'body-parser';
+import cors from 'cors';
+import { scheduleMessage } from './scheduler';
 
 const app = express();
 app.use(cors());
-app.use(bodyParser.json());
+app.use(json());
 
 app.post('/api/schedule', (req, res) => {
   const tasks = req.body.tasks;
